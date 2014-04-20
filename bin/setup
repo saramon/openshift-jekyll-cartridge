@@ -1,7 +1,12 @@
 #!/bin/bash -eu
 
-export PATH=/opt/rh/ruby193/root/bin:$PATH
-export LD_LIBRARY_PATH=/opt/rh/ruby193/root/usr/lib64
-mkdir $OPENSHIFT_JEKYLL_DIR/logs
-mkdir $OPENSHIFT_JEKYLL_DIR/.gems
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
+env_dir=$OPENSHIFT_JEKYLL_DIR/env
+dirname $(scl enable ruby193 "which ruby") > $env_dir/OPENSHIFT_RUBY_PATH_ELEMENT
+ld_path=$(LD_LIBRARY_PATH="" scl enable ruby193 "printenv LD_LIBRARY_PATH")
+set_env_var 'OPENSHIFT_RUBY_LD_LIBRARY_PATH_ELEMENT' $ld_path $env_dir
+scl enable ruby193 "printenv MANPATH" > $env_dir/MANPATH
+
+mkdir -p $OPENSHIFT_JEKYLL_DIR/logs
+mkdir -p $OPENSHIFT_JEKYLL_DIR/.gems
