@@ -1,3 +1,9 @@
+# UPDATE VERSION 0.0.2 Added Jekyll-Bootstrap
+
+Now it uses Jekyll-Bootstrap out of the box.
+
+More about Jekyll-Bootstrap you can find [here](https://github.com/plusjade/jekyll-bootstrap/).
+
 # OpenShift Jekyll Cartridge
 
 Pretty much everything seems to be working fine, but it can still use some testing.  
@@ -6,9 +12,9 @@ If you find any issues, please log them in the [issues](https://github.com/opens
 
 ###How to use this cartridge
 
-1.)  Create a new application on OpenShift using this command:  
+1.)  Create a new application on OpenShift using this command :  
 
-    rhc app create jekyll https://raw.github.com/openshift-cartridges/openshift-jekyll-cartridge/master/metadata/manifest.yml  
+    rhc app create jekyll https://raw.github.com/saramon/openshift-jekyll-cartridge/master/metadata/manifest.yml  
     
 2.)  Git clone the repository that is associated with your OpenShift gear to your local machine  (the create command should do this for you)  
 3.)  Change directory (cd) into the cloned repository and run the following commands (you can also use bundle install to install the gems from the Gemfile)
