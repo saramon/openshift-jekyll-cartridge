@@ -23,10 +23,11 @@ function ishttpup() {
     let count=0
     while [ ${count} -lt 64 ]
     do
-        if /usr/sbin/lsof -P -n -i "@${OPENSHIFT_JEKYLL_IP}:${OPENSHIFT_JEKYLL_HTTP_PORT}" | grep "(LISTEN)" > /dev/null; then
+        if echo 2> /dev/null > "/dev/tcp/${OPENSHIFT_JEKYLL_IP}/${OPENSHIFT_JEKYLL_HTTP_PORT}"; then
             echo "Found ${OPENSHIFT_JEKYLL_IP}:${OPENSHIFT_JEKYLL_HTTP_PORT} listening port"
             return 0
         fi
+ 
         let count=${count}+1
 
         sleep 2
